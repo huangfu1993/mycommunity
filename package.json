@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "egg-view-nunjucks": "^2.3.0",
+    "moment": "^2.29.4"
+  }
+}
