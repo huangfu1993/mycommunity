@@ -28,7 +28,7 @@ POST /users/login
 
 ## 用户注册
 
-POST /api/users
+POST /api/users/register
 请求体：
 
 ```javascript
@@ -52,7 +52,7 @@ POST /api/users
 必填字段：email、username 、password
 
 获取当前登录用户
-GET /api/user
+GET /api/user/getCurrentUser
 
 需要身份验证，返回当前用户的用户。
 
@@ -69,7 +69,7 @@ GET /api/user
 ```
 
 更新当前登录用户资料
-PUT /api/user
+POST /api/user/update
 
 请求体示例：
 
@@ -105,9 +105,11 @@ PUT /api/user
 ```
 
 获取用户资料
-GET /api/profiles/:username
+GET /api/user/getUserDetail/:username
 
 无需身份认证，返回用户资料。
+
+包括用户信息，文章列表、关注人数量，粉丝数量
 
 ```javascript
 {
@@ -115,63 +117,51 @@ GET /api/profiles/:username
     "username": "jake",
     "bio": "I work at statefarm",
     "image": "https://static.productionready.io/images/smiley-cyrus.jpg",
-    "following": false
+    "following": false,
   }
 }
 ```
 
-## 订阅视频频道
+## 关注用户
 
-POST /profiles/:username/follow
+POST /user/follow/:username
 
-## 取消订阅视频频道
+## 取消关注用户
 
-DELETE /profiles/:username/follow
+DELETE /user/unfollow/:username
 
-## 获取视频列表
+## 创建文章
 
-GET /videos
+POST /article/create
 
-## 获取用户关注的频道视频列表
+生成文章 id。
 
-GET /videos/feed
+返回文章详情
 
-## 获取用户发布的视频列表
+## 更新文章
 
-GET /users/:userId/videos
+POST /article/update/:articleId
 
-## 获取用户喜欢的视频列表
+## 删除文章
 
-GET /user/videos/liked
+POST /article/detelearticle/:articleId
 
-## 获取用户观看记录
+## 获取文章详情
 
-GET /user/videos/history
+GET /article/datail/:articleId
 
-## 创建视频
+## 评论文章
 
-POST /videos
+POST /article/comment/:articleId
 
-## 更新视频
+## 回复评论
 
-PUT /articles/:videoId
+POST /article/comment/:articleId/:commentId
 
-## 删除视频
+## 删除评论
 
-DELETE /videos/:videoId
+GET GET /article/deleteComment:commentId
 
-## 添加视频评论
+## 文章点赞
 
-POST /videos/:videoId/comments
-
-## 获取视频评论列表
-
-GET /videos/:videoId/comments
-
-## 删除视频评论
-
-DELETE /videos/:videoId/comments/:commentId
-
-## 视频点赞
-
-DELETE /videos/:videoId/like
+GET /article/:videoId/like
