@@ -31,6 +31,14 @@ module.exports = appInfo => {
     serverUrl: 'https://hacker-news.firebaseio.com/v0',
   };
 
+  // https://www.eggjs.org/zh-CN/core/security
+  // 关闭CSRF
+  config.security = {
+    csrf: {
+      enable: false,
+    },
+  };
+
   // add your user config here
   const userConfig = {
     // myAppName: 'egg',
