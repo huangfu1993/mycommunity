@@ -5,8 +5,8 @@ class UserController extends Controller {
     this.ctx.body = 'Hello world';
   }
 
-  async login(params) {
-    const data = await this.ctx.service.user.login(params);
+  async login() {
+    const data = await this.ctx.service.user.login();
     this.ctx.body = data;
   }
 }

@@ -2,8 +2,7 @@
 const Service = require('egg').Service;
 
 class NewsService extends Service {
-  async login(params) {
-    console.log(params);
+  async login() {
     return {
       name: 'libai',
       age: 'hhh',
