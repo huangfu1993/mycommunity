@@ -51,8 +51,9 @@ POST /api/users/register
 
 必填字段：email、username 、password
 
-获取当前登录用户
-GET /api/user/getCurrentUser
+## 获取当前登录用户
+
+GET /apihttp://127.0.0.1:7002/user/getCurrentUser
 
 需要身份验证，返回当前用户的用户。
 
@@ -68,8 +69,9 @@ GET /api/user/getCurrentUser
 }
 ```
 
-更新当前登录用户资料
-POST /api/user/update
+## 更新当前登录用户资料
+
+POST /apihttp://127.0.0.1:7002/user/update
 
 请求体示例：
 
@@ -104,8 +106,9 @@ POST /api/user/update
 }
 ```
 
-获取用户资料
-GET /api/user/getUserDetail/:username
+## 获取用户资料
+
+GET /apihttp://127.0.0.1:7002/user/getUserDetail/:username
 
 无需身份认证，返回用户资料。
 
@@ -124,15 +127,15 @@ GET /api/user/getUserDetail/:username
 
 ## 关注用户
 
-POST /user/follow/:username
+POST http://127.0.0.1:7002/user/follow/:username
 
 ## 取消关注用户
 
-DELETE /user/unfollow/:username
+DELETE http://127.0.0.1:7002/user/unfollow/:username
 
 ## 创建文章
 
-POST /article/create
+POST http://127.0.0.1:7002/article/create
 
 生成文章 id。
 
@@ -140,28 +143,28 @@ POST /article/create
 
 ## 更新文章
 
-POST /article/update/:articleId
+POST http://127.0.0.1:7002/article/update/:articleId
 
 ## 删除文章
 
-POST /article/detelearticle/:articleId
+POST http://127.0.0.1:7002/article/detelearticle/:articleId
 
 ## 获取文章详情
 
-GET /article/datail/:articleId
+GET http://127.0.0.1:7002/article/datail/:articleId
 
 ## 评论文章
 
-POST /article/comment/:articleId
+POST http://127.0.0.1:7002/article/comment/:articleId
 
 ## 回复评论
 
-POST /article/comment/:articleId/:commentId
+POST http://127.0.0.1:7002/article/comment/:articleId/:commentId
 
 ## 删除评论
 
-GET GET /article/deleteComment:commentId
+GET GET http://127.0.0.1:7002/article/deleteComment:commentId
 
 ## 文章点赞
 
-GET /article/:videoId/like
+GET http://127.0.0.1:7002/article/:articleId/like
