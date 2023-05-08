@@ -16,7 +16,7 @@ module.exports = appInfo => {
   config.keys = appInfo.name + '_1683426945125_3491';
 
   // add your middleware config here
-  config.middleware = [];
+  config.middleware = ['errorhandle'];
 
   //  渲染视图
   config.view = {
@@ -26,6 +26,7 @@ module.exports = appInfo => {
     },
   };
 
+  // 测试接口
   config.news = {
     pageSize: 5,
     serverUrl: 'https://hacker-news.firebaseio.com/v0',
@@ -37,6 +38,12 @@ module.exports = appInfo => {
     csrf: {
       enable: false,
     },
+  };
+
+  // jwt
+  config.jwt = {
+    secret: 'bd752b64-0bc8-4598-b222-38f3728e0551',
+    expiresIn: '1d',
   };
 
   // add your user config here

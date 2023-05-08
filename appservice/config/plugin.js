@@ -12,4 +12,10 @@ module.exports = {
     enable: true,
     package: 'egg-view-nunjucks',
   },
+
+  // 验证
+  validate: {
+    enable: true,
+    package: 'egg-validate',
+  },
 };

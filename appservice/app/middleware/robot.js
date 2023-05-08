@@ -1,5 +1,3 @@
-// app/middleware/robot.js
-// options === app.config.robot
 module.exports = options => {
   return async function robotMiddleware(ctx, next) {
     const source = ctx.get('user-agent') || '';
@@ -13,8 +11,6 @@ module.exports = options => {
   };
 };
 
-// config/config.default.js
-// add middleware robot
 exports.middleware = ['robot'];
 // robot's configurations
 exports.robot = {

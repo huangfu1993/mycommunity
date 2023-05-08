@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "egg-view-nunjucks": "^2.3.0",
-    "moment": "^2.29.4"
+    "egg-validate": "^2.0.2",
+    "jsonwebtoken": "^9.0.0"
   }
 }
