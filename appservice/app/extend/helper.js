@@ -6,8 +6,13 @@ const crypto = require('crypto');
 exports.relativeTime = time => moment(new Date(time * 1000)).fromNow();
 
 // 读本地json文件
-exports.readfile = async paramsPath => {
-  const filePath = path.join('../public', paramsPath);
+exports.readfile = async (dirname, filename) => {
+  const filePath = path.join(
+    __dirname,
+    `../public/${dirname}`,
+    `${filename}.json`
+  );
+
   const result = await fs.readFile(filePath);
 
   return JSON.parse(result);

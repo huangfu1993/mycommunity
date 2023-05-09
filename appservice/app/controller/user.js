@@ -7,7 +7,17 @@ class UserController extends Controller {
 
   // 登录
   async login() {
-    const data = await this.ctx.service.user.login();
+    const body = this.ctx.request.body;
+    // 数据验证
+    this.ctx.validate(
+      {
+        username: { type: 'string' },
+        password: { type: 'string' },
+      },
+      body
+    );
+
+    const data = await this.ctx.service.user.login(body);
     this.ctx.body = data;
     this.ctx.helper.writefile();
   }
@@ -16,11 +26,14 @@ class UserController extends Controller {
   async register() {
     const body = this.ctx.request.body;
     // 数据验证
-    this.ctx.validate({
-      username: { type: 'string' },
-      email: { type: 'email' },
-      password: { type: 'string' },
-    });
+    this.ctx.validate(
+      {
+        username: { type: 'string' },
+        email: { type: 'email' },
+        password: { type: 'string' },
+      },
+      body
+    );
 
     const data = await this.ctx.service.user.register(body);
     this.ctx.body = data;
