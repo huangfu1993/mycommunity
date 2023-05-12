@@ -6,12 +6,15 @@ class NewsService extends Service {
   // 登录
   async login(params) {
     // 读取数据
-    const user = await this.ctx.helper.readfile('user', params.username);
-    // 对比密码
+    const user = await this.app.mysql.get('user', {
+      username: params.username,
+    });
+
     if (!user) {
       this.ctx.throw(401);
     }
 
+    // 对比密码
     if (this.ctx.helper.md5(params.password) !== user.password) {
       this.ctx.throw(401);
     }
@@ -27,9 +30,9 @@ class NewsService extends Service {
   // 注册
   async register(params) {
     params.password = this.ctx.helper.md5(params.password);
-    params.id = new Date().valueOf().toString(16);
     // 存一个本地json文件
-    await this.ctx.helper.writefile('user', params.username, params);
+    const result = await this.app.mysql.insert('user', params);
+
     params.token = await this.createToken({ username: params.username });
     delete params.password;
     return { user: params };

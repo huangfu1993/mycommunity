@@ -1,1 +1,7 @@
-{"username":"小明","email":"aa.sjf@qq.com","password":"9fbc3c9587743a7dda4398cf4d2ae427","id":"187fbbc0fb3","token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IuWwj-aYjiIsImlhdCI6MTY4MzU1NTYxOCwiZXhwIjoxNjgzNjQyMDE4fQ.79gv-VFsTDtJo26pYtE4lnxbpJ0wpACxjDK8-9OUmpA"}
+{
+  "username": "小明",
+  "email": "aa.sjf@qq.com",
+  "password": "9fbc3c9587743a7dda4398cf4d2ae427",
+  "id": "187fbbc0fb3",
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IuWwj-aYjiIsImlhdCI6MTY4MzU1NTYxOCwiZXhwIjoxNjgzNjQyMDE4fQ.79gv-VFsTDtJo26pYtE4lnxbpJ0wpACxjDK8-9OUmpA"
+}
