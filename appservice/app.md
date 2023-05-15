@@ -53,7 +53,7 @@ POST /api/users/register
 
 ## 获取当前登录用户
 
-GET /apihttp://127.0.0.1:7002/user/getCurrentUser
+GET http://127.0.0.1:7002/user/getCurrentUser
 
 需要身份验证，返回当前用户的用户。
 
@@ -108,7 +108,7 @@ POST /apihttp://127.0.0.1:7002/user/update
 
 ## 获取用户资料
 
-GET /apihttp://127.0.0.1:7002/user/getUserDetail/:username
+GET /http://127.0.0.1:7002/user/getUserDetail/:username
 
 无需身份认证，返回用户资料。
 

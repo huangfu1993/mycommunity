@@ -30,7 +30,6 @@ class NewsService extends Service {
   // 注册
   async register(params) {
     params.password = this.ctx.helper.md5(params.password);
-    // 存一个本地json文件
     const result = await this.app.mysql.insert('user', params);
 
     params.token = await this.createToken({ username: params.username });
@@ -38,8 +37,40 @@ class NewsService extends Service {
     return { user: params };
   }
 
-  // 生成token
+  // 获取用户信息
+  async getCurrentUser(params) {
+    const result = await this.app.mysql.get('user', {
+      username: params.username,
+    });
+    delete params.password;
+    return { user: result };
+  }
 
+  async findUserByUsername(params) {
+    const result = await this.app.mysql.get('user', {
+      username: params.username,
+    });
+
+    return result;
+  }
+
+  async findUserByEmail(params) {
+    const result = await this.app.mysql.get('user', {
+      email: params.email,
+    });
+
+    return result;
+  }
+
+  async getCurrentUser(params) {
+    const result = await this.app.mysql.get('user', {
+      username: params.username,
+    });
+    delete params.password;
+    return { user: result };
+  }
+
+  // 生成token
   async createToken(data) {
     const token = await jwt.sign(data, this.app.config.jwt.secret, {
       expiresIn: this.app.config.jwt.expiresIn,

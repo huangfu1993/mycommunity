@@ -10,4 +10,5 @@ module.exports = app => {
   router.get('/new', controller.new.list);
   router.post('/api/users/login', controller.user.login);
   router.post('/api/users/register', controller.user.register);
+  router.get('/api/users/getCurrentUser', controller.user.getCurrentUser);
 };
