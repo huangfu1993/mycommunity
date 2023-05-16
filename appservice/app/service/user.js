@@ -22,6 +22,7 @@ class NewsService extends Service {
     delete user.password;
 
     user.token = await this.createToken({ username: params.username });
+
     return {
       user,
     };
@@ -76,6 +77,30 @@ class NewsService extends Service {
       expiresIn: this.app.config.jwt.expiresIn,
     });
     return token;
+  }
+
+  // 校验token是否有效
+  async verify(token) {
+    return jwt.verify(token, this.app.config.jwt.secret);
+  }
+
+  // 关注
+  async follow(data) {
+    const params = {
+      fensi: data,
+      username: this.ctx.user.username,
+    };
+    await this.app.mysql.insert('follow', params);
+    return params;
+  }
+  // 取消关注
+  async unfollow(data) {
+    const params = {
+      fensi: data,
+      username: this.ctx.user.username,
+    };
+    await this.app.mysql.delete('follow', params);
+    return params;
   }
 }
 

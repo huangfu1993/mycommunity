@@ -19,7 +19,6 @@ class UserController extends Controller {
 
     const data = await this.ctx.service.user.login(body);
     this.ctx.body = data;
-    this.ctx.helper.writefile();
   }
 
   // 注册
@@ -53,6 +52,20 @@ class UserController extends Controller {
     const body = this.ctx.request.body;
     const data = await this.ctx.service.user.getCurrentUser(body);
     this.ctx.body = data;
+  }
+
+  // 关注用户
+  async follow(ctx) {
+    const fensi = ctx.params.username;
+    const data = await ctx.service.user.follow(fensi);
+    ctx.body = data;
+  }
+
+  // 取消关注用户
+  async unfollow(ctx) {
+    const fensi = ctx.params.username;
+    const data = await ctx.service.user.unfollow(fensi);
+    ctx.body = data;
   }
 }
 module.exports = UserController;
