@@ -16,7 +16,7 @@ class NewsController extends Controller {
       __dirname,
       `../public/image/${randomName}${imageType}`
     );
-    console.log(process.env);
+
     await fs.writeFile(filepath, data);
     this.ctx.body = {
       success: true,
