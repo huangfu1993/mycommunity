@@ -7,6 +7,7 @@ module.exports = app => {
   const checkLoginStatus = app.middleware.checkLoginStatus();
 
   const { router, controller } = app;
+  router.post('/api/uploadImg/upload', controller.uploadImg.upload);
   router.get('/', controller.home.index);
   router.get('/get', controller.user.index);
   router.get('/new', controller.new.list);

@@ -60,6 +60,12 @@ module.exports = appInfo => {
     },
   };
 
+  config.cors = {
+    origin: '*', //注释掉，因为不支持cookie
+    credentials: true, // 允许跨域请求携带cookies
+    allowMethods: 'GET,HEAD,PUT,POST,DELETE,PATCH,OPTIONS',
+  };
+
   // jwt
   config.jwt = {
     secret: 'bd752b64-0bc8-4598-b222-38f3728e0551',
@@ -69,6 +75,14 @@ module.exports = appInfo => {
   // add your user config here
   const userConfig = {
     // myAppName: 'egg',
+  };
+
+  config.cluster = {
+    listen: {
+      path: '',
+      port: 8099,
+      hostname: '127.0.0.1', // 0.0.0.0
+    },
   };
 
   return {
