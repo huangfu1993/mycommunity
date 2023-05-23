@@ -13,6 +13,7 @@ module.exports = app => {
   router.get('/new', controller.new.list);
   router.post('/api/users/login', controller.user.login);
   router.post('/api/users/register', controller.user.register);
+  router.post('/api/users/update', checkLoginStatus, controller.user.update);
   router.get('/api/users/getCurrentUser', controller.user.getCurrentUser);
   router.get(
     '/api/user/follow/:username',
@@ -23,5 +24,17 @@ module.exports = app => {
     '/api/user/unfollow/:username',
     checkLoginStatus,
     controller.user.unfollow
+  );
+
+  router.post(
+    '/api/article/create',
+    checkLoginStatus,
+    controller.article.create
+  );
+
+  router.post(
+    '/api/article/update/:articleId',
+    checkLoginStatus,
+    controller.article.update
   );
 };

@@ -54,6 +54,30 @@ class UserController extends Controller {
     this.ctx.body = data;
   }
 
+  // 更新用户资料
+  async update() {
+    const body = this.ctx.request.body;
+
+    // 当前登录用户
+    const user = this.ctx.user;
+    // 用户名唯一
+    const userByusername = await this.ctx.service.user.findUserByUsername(user);
+
+    if (userByusername.id !== user.id) {
+      this.ctx.throw(422, '用户名已存在');
+    }
+
+    // 用户邮箱唯一
+    const userByEmail = await this.ctx.service.user.findUserByEmail(user);
+
+    if (userByEmail.id !== user.id) {
+      this.ctx.throw(422, '用户邮箱已存在');
+    }
+
+    const data = await this.ctx.service.user.update({ ...user, ...body });
+    this.ctx.body = data;
+  }
+
   // 关注用户
   async follow(ctx) {
     const fensi = ctx.params.username;

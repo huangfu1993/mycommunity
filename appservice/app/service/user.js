@@ -47,6 +47,14 @@ class NewsService extends Service {
     return { user: result };
   }
 
+  // 更新用户资料
+  async update(params) {
+    await this.app.mysql.update('user', params);
+
+    delete params.password;
+    return { user: { ...params } };
+  }
+
   async findUserByUsername(params) {
     const result = await this.app.mysql.get('user', {
       username: params.username,
