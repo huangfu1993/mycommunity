@@ -49,6 +49,9 @@ class NewsService extends Service {
 
   // 更新用户资料
   async update(params) {
+    if (params.password) {
+      params.password = this.ctx.helper.md5(params.password);
+    }
     await this.app.mysql.update('user', params);
 
     delete params.password;

@@ -29,12 +29,18 @@ module.exports = app => {
   router.post(
     '/api/article/create',
     checkLoginStatus,
-    controller.article.create
+    controller.article.createArticle
   );
 
   router.post(
     '/api/article/update/:articleId',
     checkLoginStatus,
     controller.article.update
+  );
+
+  router.post(
+    '/api/article/comment/:articleId',
+    checkLoginStatus,
+    controller.article.commentArticle
   );
 };
