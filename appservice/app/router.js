@@ -14,7 +14,12 @@ module.exports = app => {
   router.post('/api/users/login', controller.user.login);
   router.post('/api/users/register', controller.user.register);
   router.post('/api/users/update', checkLoginStatus, controller.user.update);
-  router.get('/api/users/getCurrentUser', controller.user.getCurrentUser);
+  router.get(
+    '/api/users/getCurrentUser',
+    checkLoginStatus,
+    controller.user.getCurrentUser
+  );
+  router.get('/api/users/getUserDetail', controller.user.getUserDetail);
   router.get(
     '/api/user/follow/:username',
     checkLoginStatus,

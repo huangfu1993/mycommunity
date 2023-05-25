@@ -62,7 +62,7 @@ class NewsService extends Service {
     const result = await this.app.mysql.get('user', {
       username: params.username,
     });
-
+    delete result.password;
     return result;
   }
 
@@ -112,6 +112,38 @@ class NewsService extends Service {
     };
     await this.app.mysql.delete('follow', params);
     return params;
+  }
+
+  // 获取其他用户详情
+  async getUserDetail(data) {
+    // 获取用户基本信息
+    const user = await this.findUserByUsername({ username: data });
+
+    // todo 获取文章列表
+    // 互殴用户创建的文章
+    const articles = await this.app.mysql.get('article', {
+      username: data,
+    });
+    // todo 用户粉丝数量
+    // 获取用户粉丝数量
+    const fans = await this.app.mysql.get('follow', {
+      username: data,
+    });
+    // todo 用户关注数量
+    // 获取用户关注数量
+    const interest = await this.app.mysql.get('follow', {
+      fensi: data,
+    });
+
+    const response = {
+      user,
+      articles,
+      fans,
+      interest,
+    };
+
+    console.log(response, 'response');
+    return response;
   }
 }
 

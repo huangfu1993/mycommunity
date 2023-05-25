@@ -91,5 +91,14 @@ class UserController extends Controller {
     const data = await ctx.service.user.unfollow(fensi);
     ctx.body = data;
   }
+
+  // 获取其他用户详情
+  async getUserDetail() {
+    // 用户名称
+    const username = this.ctx.query.username;
+    console.log(username, 'username');
+    const data = await this.ctx.service.user.getUserDetail(username);
+    this.ctx.body = data;
+  }
 }
 module.exports = UserController;
