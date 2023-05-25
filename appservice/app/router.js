@@ -43,4 +43,6 @@ module.exports = app => {
     checkLoginStatus,
     controller.article.commentArticle
   );
+
+  router.get('/api/article/like', checkLoginStatus, controller.article.like);
 };

@@ -78,6 +78,24 @@ class ArticleController extends Controller {
 
     this.ctx.body = data;
   }
+
+  // 文章点赞
+  async like() {
+    const articleId = +this.ctx.query.articleId;
+    const like = +this.ctx.query.like;
+    const user = this.ctx.user;
+
+    const params = {
+      username: user.username,
+      articleId,
+      like,
+    };
+
+    const data = await this.ctx.service.article.like(params);
+
+    this.ctx.body = data;
+  }
+  // 文章点踩
 }
 
 module.exports = ArticleController;
